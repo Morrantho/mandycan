@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Text;
+using System.Collections.Generic;
 
 namespace mandycan{
     class Program{
@@ -16,40 +17,25 @@ namespace mandycan{
 	        			if(args.Length > 1){
 	        				args[1] = Util.upperFirst(args[1]);
 	        				string appDir = pwd+"/"+args[1];
-	        				Util.mkdir(appDir);
-	        				Util.mkdir(appDir+"/Controllers");
-	        				Util.mkdir(appDir+"/Views/Shared");
-	        				Util.mkdir(appDir+"/Views/"+args[1]);
-	        				Util.mkdir(appDir+"/Models");
-	        				Util.mkdir(appDir+"/wwwroot/css");
-	        				Util.mkdir(appDir+"/wwwroot/js");
+	        				string[] folders = {appDir,appDir+"/Controllers",appDir+"/Views/Shared",appDir+"/Views/"+args[1],appDir+"/Models",appDir+"/wwwroot/css",appDir+"/wwwroot/js"};
+	        				for(int i=0;i<folders.Length;i++) Util.mkdir(folders[i]);
 	        				Util.write(appDir+"/wwwroot/css/style.css","");
 	        				Util.write(appDir+"/wwwroot/js/main.js","");
+	        				Dictionary<string,string> files = new Dictionary<string,string>(){
+	        					{"startup.txt",appDir+"/Startup.cs"},
+	        					{"program.txt",appDir+"/Program.cs"},
+	        					{"csproj.txt",appDir+"/"+args[1]+".csproj"},
+	        					{"layout.txt",appDir+"/Views/Shared/_Layout.cshtml"},
+	        					{"viewimports.txt",appDir+"/Views/_ViewImports.cshtml"},
+	        					{"viewstart.txt",appDir+"/Views/_ViewStart.cshtml"},
+	        					{"controller.txt",appDir+"/Controllers/"+args[1]+".cs"},
+	        					{"view.txt",appDir+"/Views/"+args[1]+"/Index.cshtml"}
+	        				};
 
-	        				string program = Util.read(templates+"/program.txt").Replace("Template",args[1]);
-	        				string startup = Util.read(templates+"/startup.txt").Replace("Template",args[1]);
-	        				string csproj  = Util.read(templates+"/csproj.txt");
-
-	        				string layout = Util.read(templates+"/layout.txt").Replace("Template",args[1]);
-	        				string viewimports = Util.read(templates+"/viewimports.txt").Replace("Template",args[1]);
-	        				string viewstart = Util.read(templates+"/viewstart.txt");
-
-	        				string controller = Util.read(templates+"/controller.txt").Replace("Template",args[1]);
-	        				string view       = Util.read(templates+"/view.txt").Replace("Template",args[1]);
-
-	        				// Startup:
-	        				Util.write(appDir+"/Startup.cs",startup);
-	        				Util.write(appDir+"/Program.cs",program);
-	        				Util.write(appDir+"/"+args[1]+".csproj",csproj);
-
-	        				// Controller:
-	        				Util.write(appDir+"/Controllers/"+args[1]+".cs",controller);
-
-	        				// Views:
-	        				Util.write(appDir+"/Views/Shared/_Layout.cshtml",layout);
-	        				Util.write(appDir+"/Views/_ViewImports.cshtml",viewimports);
-	        				Util.write(appDir+"/Views/_ViewStart.cshtml",viewstart);
-	        				Util.write(appDir+"/Views/"+args[1]+"/Index.cshtml",view);
+	        				foreach(var file in files){
+	        					string contents = Util.read(templates+"/"+file.Key).Replace("Template",args[1]);
+	        					Util.write(file.Value,contents);
+	        				}
 	        			}
 	        			break;
 	        		case "mvc":
