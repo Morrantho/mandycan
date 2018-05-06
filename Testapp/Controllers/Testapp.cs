@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Template.Controllers{
-    public class TemplateController:Controller{
+namespace Testapp.Controllers{
+    public class TestappController:Controller{
         [HttpGet]
         [Route("")]
         public IActionResult Index(){
