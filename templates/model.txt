@@ -1,0 +1,18 @@
+
+namespace Template.Models{
+	public class Template{
+		[Required]
+		[MinLength(1)]
+		public string first{set;get;}
+
+		[Required]
+		[MinLength(1)]
+		public string last{set;get;}
+
+		[EmailAddress]
+		public string email{set;get;}
+
+		[DataType(DataType.Password)]
+		public string password{set;get}
+	}
+}
