@@ -9,7 +9,9 @@ namespace mandycan{
 
         static void Main(string[] args){
         	pwd = Util.pwd();
-        	string templates = pwd+"/templates";
+        	string buildDir = AppDomain.CurrentDomain.BaseDirectory;
+        	buildDir = buildDir.Substring(0,buildDir.IndexOf("mandycan")+8);
+        	string templates = buildDir+"/templates";
 
         	if(args.Length > 0){
 	        	switch(args[0]){
@@ -40,7 +42,13 @@ namespace mandycan{
 	        			break;
 	        		case "mvc":
 	        			if(args.Length > 1){
-
+							args[1] = Util.upperFirst(args[1]);
+	        				string appDir = pwd+"/";
+	        				string controller = Util.read(templates+"/controller.txt").Replace("Template",args[1]);
+	        				Util.write(appDir+"/Controllers/"+args[1]+".cs",controller);
+	        				Util.mkdir(appDir+"/Views/"+args[1]);
+	        				string view = Util.read(templates+"/view.txt").Replace("Template",args[1]);
+	        				Util.write(appDir+"/Views/"+args[1]+"/Index.cshtml",view);
 	        			}
 	        			break;
 	        	}
