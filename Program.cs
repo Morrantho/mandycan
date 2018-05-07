@@ -19,19 +19,21 @@ namespace mandycan{
 	        			if(args.Length > 1){
 	        				args[1] = Util.upperFirst(args[1]);
 	        				string appDir = pwd+"/"+args[1];
-	        				string[] folders = {appDir,appDir+"/Controllers",appDir+"/Views/Shared",appDir+"/Views/"+args[1],appDir+"/Models",appDir+"/wwwroot/css",appDir+"/wwwroot/js"};
+	        				string[] folders = {appDir,appDir+"/Controllers",appDir+"/Views/Shared",appDir+"/Views/"+args[1],appDir+"/Models",appDir+"/Factories",appDir+"/wwwroot/css",appDir+"/wwwroot/js"};
 	        				for(int i=0;i<folders.Length;i++) Util.mkdir(folders[i]);
 	        				Util.write(appDir+"/wwwroot/css/style.css","");
 	        				Util.write(appDir+"/wwwroot/js/main.js","");
 	        				Dictionary<string,string> files = new Dictionary<string,string>(){
 	        					{"startup.txt",appDir+"/Startup.cs"},
 	        					{"program.txt",appDir+"/Program.cs"},
+	        					{"appsettings.txt",appDir+"/appsettings.json"},
 	        					{"csproj.txt",appDir+"/"+args[1]+".csproj"},
 	        					{"layout.txt",appDir+"/Views/Shared/_Layout.cshtml"},
 	        					{"viewimports.txt",appDir+"/Views/_ViewImports.cshtml"},
 	        					{"viewstart.txt",appDir+"/Views/_ViewStart.cshtml"},
 	        					{"controller.txt",appDir+"/Controllers/"+args[1]+".cs"},
-	        					{"view.txt",appDir+"/Views/"+args[1]+"/Index.cshtml"}
+	        					{"view.txt",appDir+"/Views/"+args[1]+"/Index.cshtml"},
+	        					{"ifactory.txt",appDir+"/Factories/IFactory.cs"}
 	        				};
 
 	        				foreach(var file in files){
