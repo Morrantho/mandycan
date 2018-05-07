@@ -26,6 +26,7 @@ namespace mandycan{
 	        				Dictionary<string,string> files = new Dictionary<string,string>(){
 	        					{"startup.txt",appDir+"/Startup.cs"},
 	        					{"program.txt",appDir+"/Program.cs"},
+	        					{"appsettings.txt",appDir+"/appsettings.json"},
 	        					{"csproj.txt",appDir+"/"+args[1]+".csproj"},
 	        					{"layout.txt",appDir+"/Views/Shared/_Layout.cshtml"},
 	        					{"viewimports.txt",appDir+"/Views/_ViewImports.cshtml"},
