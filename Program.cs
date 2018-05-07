@@ -33,7 +33,8 @@ namespace mandycan{
 	        					{"viewstart.txt",appDir+"/Views/_ViewStart.cshtml"},
 	        					{"controller.txt",appDir+"/Controllers/"+args[1]+".cs"},
 	        					{"view.txt",appDir+"/Views/"+args[1]+"/Index.cshtml"},
-	        					{"ifactory.txt",appDir+"/Factories/IFactory.cs"}
+	        					{"ifactory.txt",appDir+"/Factories/IFactory.cs"},
+	        					{"model.txt",appDir+"/Models/"+args[1]+".cs"}
 	        				};
 
 	        				foreach(var file in files){
@@ -51,6 +52,22 @@ namespace mandycan{
 	        				Util.mkdir(appDir+"/Views/"+args[1]);
 	        				string view = Util.read(templates+"/view.txt").Replace("Template",args[1]);
 	        				Util.write(appDir+"/Views/"+args[1]+"/Index.cshtml",view);
+	        				string model = Util.read(templates+"/model.txt").Replace("Template",args[1]);
+	        				Util.write(appDir+"/Models/"+args[1]+".cs",model);
+	        			}
+	        			break;
+	        		case "model":
+	        			if(args.Length > 1){
+	        				string appDir = pwd+"/";
+	        				string model = Util.read(templates+"/model.txt").Replace("Template",args[1]);
+	        				Util.write(appDir+"/Models/"+args[1]+".cs",model);
+	        			}
+	        			break;
+	        		case "controller":
+	        			if(args.Length > 1){
+	        				string appDir = pwd+"/";
+	        				string controller = Util.read(templates+"/controller.txt").Replace("Template",args[1]);
+	        				Util.write(appDir+"/Controllers/"+args[1]+".cs",controller);
 	        			}
 	        			break;
 	        	}
