@@ -1,0 +1,25 @@
+{
+  "name": "mandycan",
+  "version": "1.0.1",
+  "description": "Mandycan is an ASP.NET Core project generator. It's goal is to minimize writing boilerplate code so that you can get to work faster.",
+  "main": "Program.cs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Morrantho/mandycan.git"
+  },
+  "keywords": [
+    "scaffold",
+    "cli",
+    "generator"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Morrantho/mandycan/issues"
+  },
+  "homepage": "https://github.com/Morrantho/mandycan#readme",
+  "dependencies": {}
+}

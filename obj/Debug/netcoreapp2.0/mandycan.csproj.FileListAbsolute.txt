@@ -1,0 +1,10 @@
+C:\Users\tony\Documents\code\c#\mandycan\obj\Debug\netcoreapp2.0\mandycan.csproj.CoreCompileInputs.cache
+C:\Users\tony\Documents\code\c#\mandycan\obj\Debug\netcoreapp2.0\mandycan.AssemblyInfoInputs.cache
+C:\Users\tony\Documents\code\c#\mandycan\obj\Debug\netcoreapp2.0\mandycan.AssemblyInfo.cs
+C:\Users\tony\Documents\code\c#\mandycan\bin\Debug\netcoreapp2.0\mandycan.deps.json
+C:\Users\tony\Documents\code\c#\mandycan\bin\Debug\netcoreapp2.0\mandycan.runtimeconfig.json
+C:\Users\tony\Documents\code\c#\mandycan\bin\Debug\netcoreapp2.0\mandycan.runtimeconfig.dev.json
+C:\Users\tony\Documents\code\c#\mandycan\bin\Debug\netcoreapp2.0\mandycan.dll
+C:\Users\tony\Documents\code\c#\mandycan\bin\Debug\netcoreapp2.0\mandycan.pdb
+C:\Users\tony\Documents\code\c#\mandycan\obj\Debug\netcoreapp2.0\mandycan.dll
+C:\Users\tony\Documents\code\c#\mandycan\obj\Debug\netcoreapp2.0\mandycan.pdb

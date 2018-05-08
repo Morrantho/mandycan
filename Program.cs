@@ -6,6 +6,12 @@ using System.Collections.Generic;
 namespace mandycan{
     class Program{
 		public static string pwd;
+		public static string cmds =
+    	"mandycan new yourProject - Generates a new project.\n"+
+    	"mandycan mvc yourController - Generate a model, view and controller all at once.\n"+
+    	"mandycan model yourModel - Generates a model\n"+
+    	"mandycan controller yourController - Generates a controller.\n"+
+    	"mandycan factory yourFactory - Generate a factory for use with Dapper.";
 
         static void Main(string[] args){
         	pwd = Util.pwd();
@@ -34,7 +40,8 @@ namespace mandycan{
 	        					{"controller.txt",appDir+"/Controllers/"+args[1]+".cs"},
 	        					{"view.txt",appDir+"/Views/"+args[1]+"/Index.cshtml"},
 	        					{"ifactory.txt",appDir+"/Factories/IFactory.cs"},
-	        					{"model.txt",appDir+"/Models/"+args[1]+".cs"}
+	        					{"model.txt",appDir+"/Models/"+args[1]+".cs"},
+	        					{"baseentity.txt",appDir+"/Models/BaseEntity.cs"}
 	        				};
 
 	        				foreach(var file in files){
@@ -54,6 +61,8 @@ namespace mandycan{
 	        				Util.write(appDir+"/Views/"+args[1]+"/Index.cshtml",view);
 	        				string model = Util.read(templates+"/model.txt").Replace("Template",args[1]);
 	        				Util.write(appDir+"/Models/"+args[1]+".cs",model);
+	        				string factory = Util.read(templates+"/factory.txt").Replace("Template",args[1]);
+	        				Util.write(appDir+"/Factories/"+args[1]+".cs",factory);
 	        			}
 	        			break;
 	        		case "model":
@@ -70,7 +79,19 @@ namespace mandycan{
 	        				Util.write(appDir+"/Controllers/"+args[1]+".cs",controller);
 	        			}
 	        			break;
+	        		case "factory":
+	        			if(args.Length > 1){
+	        				string appDir = pwd+"/";
+	        				string factory = Util.read(templates+"/factory.txt").Replace("Template",args[1]);
+	        				Util.write(appDir+"/Factories/"+args[1]+".cs",factory);
+	        			}
+	        			break;
+	        		default:
+			        	Console.WriteLine(cmds);
+	        			break;
 	        	}
+        	}else{
+	        	Console.WriteLine(cmds);
         	}
         }
     }

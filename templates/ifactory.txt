@@ -1,8 +1,8 @@
 using Template.Models;
 using System.Collections.Generic;
 
-//namespace Template.Factory{
-//    public interface IFactory<T> where T : BaseEntity{
+namespace Template.Factory{
+    public interface IFactory<T> where T:BaseEntity{
 
-//    }
-//}
+    }
+}

@@ -1,0 +1,5 @@
+namespace Template.Models{
+	public abstract class BaseEntity{
+
+	}
+}
