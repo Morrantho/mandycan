@@ -4,7 +4,39 @@ Mandycan is an ASP.NET Core project generator. It's goal is to minimize writing 
 
 ## How do I use it?
 
-Currently, Mandycan only supports 64bit windows 10 and 64bit Ubuntu 16.04. If you're running Windows, run <code>windows.bat</code>. If you're running Ubuntu 16.04, run <code>./ubuntu.sh</code>. This will build a binary targeting your specific OS. Enter the <code>bin/Release/netcoreapp2.0</code> folder followed by either the <code>win10-x64</code> or <code>ubuntu.16.10-x64</code> folder. From here, set a path variable pointing to this directory if you're on windows. If you're on Ubuntu, do the same but make an alias in your <code>.bashrc</code>
+MAKE SURE YOU <code>git clone</code> the repository.
+
+If you're on windows run <code>windows.bat</code>
+If you're on Ubuntu/Linux run <code>./ubuntu.sh</code>
+If you're on Mac run <code>./mac.sh</code>
+
+This will build an OS-specific executable in: <code>bin/Release/netcoreapp2.0/yourOS-x64</code>
+
+<code>cd</code> into this folder and allow execution permission if you're on Mac or Linux: <code>chmod +x mandycan</code>
+
+Type <code>pwd</code> on Mac/Linux or <code>chdir</code> on Windows. Copy the directory it outputs.
+
+Windows Setup:
+
+* Press the windows key.
+* Type <code>env</code> and press enter.
+* Goto "Environment Variables..."
+* Goto "Path" and "New".
+* Paste the output you previously copied.
+* Press Ok on all the checkboxes.
+* Open a NEW cmd prompt and type <code>mandycan new yourAppNameHere</code>
+
+Linux Setup:
+
+* type <code>cd</code> into a terminal and press enter. You're now in your home folder for the current user account.
+* Open your <code>.bashrc</code> file. Its located in the folder you're currently in.
+* Add this line and edit it to reflect where you've installed mandycan: <code>alias mandycan="/Users/yourName/mandycan/bin/Release/netcoreapp2.0/ubuntu.16.10-x64/mandycan"</code>
+* Save and close <code>.bashrc</code> followed by this command: <code>source .bashrc</code>
+* Open a new terminal and type <code>mandycan new yourAppNameHere</code>
+
+Mac Setup:
+
+* Same as Linux, except edit <code>.bash_profile</code> instead of <code>.bashrc</code>
 
 ## Isnt this the same thing as CandyMan?
 
@@ -16,8 +48,8 @@ Currently, Mandycan features generating a Full MVC project via:
 
 <code>mandycan new yourProjectName</code>
 
-It also supports generating a Controller and a View associated with it via:
+To use the below commands, ensure you've already created a project via <code>mandycan new yourProjectName</code> and that you've <code>cd'd</code> into this folder.
 
-<code>mandycan mvc yourControllerName</code>
-
-To use the <code>mvc</code> command, ensure that you are inside of your project directory.
+<code>mandycan mvc User</code> - Generates a Model, View and Controller all at once.
+<code>mandycan model Animal</code> - Generates a basic Model, with commonly used annotations.
+<code>mandycan controller Product</code> - Generates a basic controller.
