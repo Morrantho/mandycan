@@ -14,5 +14,5 @@ namespace Template.Models{
 	[EmailAddress] - Field must contain an @ symbol, followed by a word and a period.
 	[DataType(DataType.Password)] - Ensures that the field conforms to a specific DataType
 */
-
+	}
 }
