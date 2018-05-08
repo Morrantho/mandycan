@@ -50,6 +50,6 @@ Currently, Mandycan features generating a Full MVC project via:
 
 To use the below commands, ensure you've already created a project via <code>mandycan new yourProjectName</code> and that you've <code>cd'd</code> into this folder.
 
-<code>mandycan mvc User</code> - Generates a Model, View and Controller all at once.
-<code>mandycan model Animal</code> - Generates a basic Model, with commonly used annotations.
-<code>mandycan controller Product</code> - Generates a basic controller.
+* <code>mandycan mvc User</code> - Generates a Model, View and Controller all at once.
+* <code>mandycan model Animal</code> - Generates a basic Model, with commonly used annotations.
+* <code>mandycan controller Product</code> - Generates a basic controller.
