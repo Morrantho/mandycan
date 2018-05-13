@@ -7,14 +7,17 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
+using Template.Models;
 
 namespace Template{
     public class Startup{
         public Startup(IHostingEnvironment env){
             var builder = new ConfigurationBuilder()
-                .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-                .AddEnvironmentVariables();
+            .SetBasePath(env.ContentRootPath)
+            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+            .AddEnvironmentVariables();
+
             Configuration = builder.Build();
         }
 
@@ -23,6 +26,7 @@ namespace Template{
         public void ConfigureServices(IServiceCollection services){
             services.AddSession();
             services.AddMvc();
+            services.AddDbContext<Context>(options => options.UseMySql(Configuration["DBInfo:ConnectionString"]));
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env,ILoggerFactory loggerFactory){

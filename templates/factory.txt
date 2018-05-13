@@ -3,9 +3,9 @@ using System.Linq;
 using Dapper;
 using System.Data;
 using MySql.Data.MySqlClient;
-using Template.Models;
+using AppName.Models;
 
-namespace Template.Factories{
+namespace AppName.Factories{
     public class TemplateFactory:IFactory<Template>{
         private string info;
 
@@ -21,7 +21,7 @@ namespace Template.Factories{
 
         public void Add(Template item){
             using (IDbConnection dbConnection = Connection){
-                string query =  "INSERT INTO Templates (field1,field2,field3) VALUES (@field1, @field2, @field3)";
+                string query = "INSERT INTO Templates (field1,field2,field3) VALUES (@field1, @field2, @field3)";
                 dbConnection.Open();
                 dbConnection.Execute(query, item);
             }
