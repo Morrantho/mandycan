@@ -41,13 +41,15 @@ namespace mandycan{
 	        					{"view.txt",appDir+"/Views/"+args[1]+"/Index.cshtml"},
 	        					{"ifactory.txt",appDir+"/Factories/IFactory.cs"},
 	        					{"model.txt",appDir+"/Models/"+args[1]+".cs"},
-	        					{"baseentity.txt",appDir+"/Models/BaseEntity.cs"}
+	        					{"baseentity.txt",appDir+"/Models/BaseEntity.cs"},
+	        					{"context.txt",appDir+"/Models/Context.cs"}
 	        				};
 
 	        				foreach(var file in files){
 	        					string contents = Util.read(templates+"/"+file.Key).Replace("Template",args[1]);
 	        					Util.write(file.Value,contents);
 	        				}
+	        				string settings = Util.read(templates+"/appsettings.txt");
 	        			}
 	        			break;
 	        		case "mvc":

@@ -1,10 +1,17 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 using Template.Models;
 
 namespace Template.Controllers{
 	[Route("/Template")]
     public class TemplateController:Controller{
+    	private Context context;
+
+    	public TemplateController(Context context){
+    		this.context = context;
+    	}
+
         [HttpGet]
         [Route("")]
         public IActionResult Index(){
