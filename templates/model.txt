@@ -14,6 +14,11 @@ namespace Template.Models{
 	[Range(5,10)] - Field must be between 5 and 10 characters.
 	[EmailAddress] - Field must contain an @ symbol, followed by a word and a period.
 	[DataType(DataType.Password)] - Ensures that the field conforms to a specific DataType
+
+	PostGres Migrations:
+
+	dotnet ef migrations add FirstMigration - Creates a migration. Requires at least one model in advance.
+	dotnet ef database update - Applies migrations much like Django's "migrate" command.
 */
 	}
 }

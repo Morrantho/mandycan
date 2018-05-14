@@ -6,11 +6,18 @@
 		}
 	},
 
+//    "DBInfo":
+//    {
+//        "Name": "MySQLconnect",
+//        "ConnectionString": "server=localhost;userid=root;password=root;port=3306;database=Template;SslMode=None"
+//    },
+
     "DBInfo":
     {
-        "Name": "MySQLconnect",
-        "ConnectionString": "server=localhost;userid=root;password=root;port=3306;database=Template;SslMode=None"
+        "Name": "PostGresConnect",
+        "ConnectionString": "server=localhost;userId=postgres;password=postgres;port=5432;database=Template;"
     },
+
 
 	"AppName":""
 }
