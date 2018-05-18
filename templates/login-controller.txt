@@ -90,5 +90,10 @@ namespace AppName.Controllers{
             }
             return View("Login");
         }
+        [Route("logout")]
+        public IActionResult Logout(){
+            HttpContext.Session.Remove("Id");
+            return RedirectToAction("Index");
+        }
     }
 }
