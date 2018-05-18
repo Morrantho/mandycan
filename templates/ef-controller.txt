@@ -1,15 +1,19 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 using System.Linq;
 using AppName.Models;
 
-namespace AppName.Controllers{
+
+
+namespace Template.Controllers{
 	[Route("/Template")]
     public class TemplateController:Controller{
-    	private Context context;
+    	private TemplateContext _context;
 
-    	public TemplateController(Context context){
-    		this.context = context;
+    	public TemplateController(TemplateContext context){
+    		_context = context;
     	}
 
         [HttpGet]

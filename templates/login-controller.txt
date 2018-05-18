@@ -1,0 +1,94 @@
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
+using Microsoft.AspNetCore.Identity;
+using AppName.Models;
+
+namespace AppName.Controllers{
+    public class LoginController:Controller{
+    	private AppNameContext _context;
+
+    	public LoginController(AppNameContext context){
+    		_context = context;
+    	}
+
+        [HttpGet]
+        [Route("")]
+        public IActionResult Register(){
+            int? Id = HttpContext.Session.GetInt32("Id");
+            if(Id != null)
+            {
+                return RedirectToAction("Index", "AppName");
+            }
+            return View("Register");
+        }
+        [HttpPost]
+        [Route("")]
+        public IActionResult Register(RegisterViewModel model){
+            int? Id = HttpContext.Session.GetInt32("Id");
+            if(Id != null)
+            {
+                return RedirectToAction("Index", "AppName");
+            }
+            if(ModelState.IsValid){
+                if(_context.Users.Any(u => u.email == model.email)){
+                    ModelState.AddModelError("email", "A user with this email already exists.");
+                    return View("Register");
+                }
+                PasswordHasher<RegisterViewModel> Hasher = new PasswordHasher<RegisterViewModel>();
+                model.password = Hasher.HashPassword(model, model.password);
+                User user = new User{
+                    first_name = model.first_name,
+                    last_name = model.last_name,
+                    email = model.email,
+                    password = model.password
+                };
+                _context.Users.Add(user);
+                _context.SaveChanges();
+                HttpContext.Session.SetInt32("Id", user.id);
+
+                return RedirectToAction("Index", "AppName");
+            }
+            return View("Register");
+        }
+        [HttpGet]
+        [Route("login")]
+        public IActionResult Login(){
+            int? Id = HttpContext.Session.GetInt32("Id");
+            if(Id != null)
+            {
+                return RedirectToAction("Index", "AppName");
+            }
+            return View("Login");
+        }
+        [HttpPost]
+        [Route("login")]
+        public IActionResult Login(LoginViewModel model){
+            int? Id = HttpContext.Session.GetInt32("Id");
+            if(Id != null)
+            {
+                return RedirectToAction("Index", "AppName");
+            }
+            if(ModelState.IsValid){
+                if (!_context.Users.Any(u => u.email == model.email)){
+                    ModelState.AddModelError("email", "Credentials are wrong.");
+                    return View("Login");
+                }
+                var user = _context.Users.SingleOrDefault(u => u.email == model.email);
+                var Hasher = new PasswordHasher<User>();
+                if(0 != Hasher.VerifyHashedPassword(user, user.password, model.password))
+                {
+                    //Handle success
+                    HttpContext.Session.SetInt32("Id", user.id);
+                    return RedirectToAction("Index", "AppName");
+                }
+                ModelState.AddModelError("email", "Credentials are wrong.");
+                return View("Login");
+                
+            }
+            return View("Login");
+        }
+    }
+}
