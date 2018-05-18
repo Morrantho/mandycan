@@ -86,62 +86,92 @@ namespace mandycan{
 	        			}
 	        			break;}
 	        		case "mvc":
-	        			{if(args.Length > 1){
-							args[1] = Util.upperFirst(args[1]);
-	        				string appDir = pwd+"/";
-	        				string controller = Util.read(templates+"/controller.txt").Replace("Template",args[1]);
-							controller = controller.Replace("AppName",Util.project());
-	        				Util.write(appDir+"/Controllers/"+args[1]+".cs",controller);
-	        				Util.mkdir(appDir+"/Views/"+args[1]);
-	        				string view = Util.read(templates+"/view.txt").Replace("Template",args[1]);
-							view = view.Replace("AppName",Util.project());
-	        				Util.write(appDir+"/Views/"+args[1]+"/Index.cshtml",view);
-	        				string model = Util.read(templates+"/model.txt").Replace("Template",args[1]);
-							model = model.Replace("AppName",Util.project());
-	        				Util.write(appDir+"/Models/"+args[1]+".cs",model);
-	        				string factory = Util.read(templates+"/factory.txt").Replace("Template",args[1]);
-							factory = factory.Replace("AppName",Util.project());
-	        				Util.write(appDir+"/Factories/"+args[1]+".cs",factory);
-	        			}
-	        			break;}
+	        			{
+							if(!File.Exists(pwd+"/startup.cs")){
+								System.Console.WriteLine("Not in a project folder!");
+								break;
+							}
+							if(args.Length > 1){
+								args[1] = Util.upperFirst(args[1]);
+	        					string appDir = pwd+"/";
+	        					string controller = Util.read(templates+"/controller.txt").Replace("Template",args[1]);
+								controller = controller.Replace("AppName",Util.project());
+	        					Util.write(appDir+"/Controllers/"+args[1]+".cs",controller);
+	        					Util.mkdir(appDir+"/Views/"+args[1]);
+	        					string view = Util.read(templates+"/view.txt").Replace("Template",args[1]);
+								view = view.Replace("AppName",Util.project());
+	        					Util.write(appDir+"/Views/"+args[1]+"/Index.cshtml",view);
+	        					string model = Util.read(templates+"/model.txt").Replace("Template",args[1]);
+								model = model.Replace("AppName",Util.project());
+	        					Util.write(appDir+"/Models/"+args[1]+".cs",model);
+	        					string factory = Util.read(templates+"/factory.txt").Replace("Template",args[1]);
+								factory = factory.Replace("AppName",Util.project());
+	        					Util.write(appDir+"/Factories/"+args[1]+".cs",factory);
+	        				}
+	        				break;
+						}
 	        		case "model":
-	        			{if(args.Length > 1){
-	        				string appDir = pwd+"/";
-	        				string model = Util.read(templates+"/model.txt").Replace("Template",Util.project());
-							model = model.Replace("AppName",Util.project());
-	        				Util.write(appDir+"/Models/"+args[1]+".cs",model);
-	        			}
-	        			break;}
+	        			{
+							if(!File.Exists(pwd+"/startup.cs")){
+								System.Console.WriteLine("Not in a project folder!");
+								break;
+							}
+							if(args.Length > 1){
+	        					string appDir = pwd+"/";
+	        					string model = Util.read(templates+"/model.txt").Replace("Template",Util.project());
+								model = model.Replace("AppName",Util.project());
+	        					Util.write(appDir+"/Models/"+args[1]+".cs",model);
+	        				}
+	        				break;
+						}
 					case "login":
-						{string appDir = pwd+"/";
-						Util.mkdir(appDir+"/Views/Login");
-						string model = Util.read(templates+"/login-model.txt").Replace("AppName",Util.project());
-						Util.write(appDir+"/Models/Login.cs",model);
-						string controller = Util.read(templates+"/login-controller.txt").Replace("AppName",Util.project());
-						Util.write(appDir+"/Controllers/Login.cs",controller);
-						string viewmodel = Util.read(templates+"/login-viewmodel.txt").Replace("AppName",Util.project());
-						Util.write(appDir+"/Models/LoginViewModel.cs",viewmodel);
-						string login = Util.read(templates+"/login-login.txt").Replace("AppName",Util.project());
-						Util.write(appDir+"/Views/Login/Login.cshtml",login);
-						string register = Util.read(templates+"/login-register.txt").Replace("AppName",Util.project());
-						Util.write(appDir+"/Views/Login/Register.cshtml",register);
-	        			break;}
+						{
+							if(!File.Exists(pwd+"/startup.cs")){
+								System.Console.WriteLine("Not in a project folder!");
+								break;
+							}
+							string appDir = pwd+"/";
+							Util.mkdir(appDir+"/Views/Login");
+							string model = Util.read(templates+"/login-model.txt").Replace("AppName",Util.project());
+							Util.write(appDir+"/Models/Login.cs",model);
+							string controller = Util.read(templates+"/login-controller.txt").Replace("AppName",Util.project());
+							Util.write(appDir+"/Controllers/Login.cs",controller);
+							string viewmodel = Util.read(templates+"/login-viewmodel.txt").Replace("AppName",Util.project());
+							Util.write(appDir+"/Models/LoginViewModel.cs",viewmodel);
+							string login = Util.read(templates+"/login-login.txt").Replace("AppName",Util.project());
+							Util.write(appDir+"/Views/Login/Login.cshtml",login);
+							string register = Util.read(templates+"/login-register.txt").Replace("AppName",Util.project());
+							Util.write(appDir+"/Views/Login/Register.cshtml",register);
+	        				break;
+						}
 	        		case "controller":
-	        			{if(args.Length > 1){
-	        				string appDir = pwd+"/";
-	        				string controller = Util.read(templates+"/controller.txt").Replace("Template",args[1]);
-							controller = controller.Replace("AppName",Util.project());
-	        				Util.write(appDir+"/Controllers/"+args[1]+".cs",controller);
-	        			}
-	        			break;}
+	        			{
+							if(!File.Exists(pwd+"/startup.cs")){
+								System.Console.WriteLine("Not in a project folder!");
+								break;
+							}
+							if(args.Length > 1){
+	        					string appDir = pwd+"/";
+	        					string controller = Util.read(templates+"/controller.txt").Replace("Template",args[1]);
+								controller = controller.Replace("AppName",Util.project());
+	        					Util.write(appDir+"/Controllers/"+args[1]+".cs",controller);
+	        				}
+	        				break;
+						}
 	        		case "factory":
-	        			{if(args.Length > 1){
-	        				string appDir = pwd+"/";
-	        				string factory = Util.read(templates+"/factory.txt").Replace("Template",args[1]);
-							factory = factory.Replace("AppName",Util.project());
-	        				Util.write(appDir+"/Factories/"+args[1]+".cs",factory);
-	        			}
-	        			break;}
+	        			{
+							if(!File.Exists(pwd+"/startup.cs")){
+								System.Console.WriteLine("Not in a project folder!");
+								break;
+							}
+							if(args.Length > 1){
+	        					string appDir = pwd+"/";
+	        					string factory = Util.read(templates+"/factory.txt").Replace("Template",args[1]);
+								factory = factory.Replace("AppName",Util.project());
+	        					Util.write(appDir+"/Factories/"+args[1]+".cs",factory);
+	        				}
+	        				break;
+						}
 	        		default:
 			        	{Console.WriteLine(cmds);
 	        			break;}
