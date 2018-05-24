@@ -1,9 +1,10 @@
 using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
 
-namespace Template.Models{
+namespace AppName.Models{
 	public class Template:BaseEntity{
-
+	
+	}
 /*
 	Useful Annotations and Examples:
 
@@ -15,10 +16,10 @@ namespace Template.Models{
 	[EmailAddress] - Field must contain an @ symbol, followed by a word and a period.
 	[DataType(DataType.Password)] - Ensures that the field conforms to a specific DataType
 
-	PostGres Migrations:
+	PostGres & MySQL Migrations:
 
 	dotnet ef migrations add FirstMigration - Creates a migration. Requires at least one model in advance.
 	dotnet ef database update - Applies migrations much like Django's "migrate" command.
 */
-	}
+	
 }

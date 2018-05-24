@@ -1,0 +1,21 @@
+<h1 class="text-center">Login</h1>
+@model AppName.Models.LoginViewModel
+<div class="row text-center">
+    <form asp-controller="AppName" asp-action="login" method="post" class="mt-5 mx-auto">
+
+            <span asp-validation-for="email" class="row m-1 text-danger text-center d-block mx-auto"></span>
+            <div class="row m-1">
+                <label class="col text-right w-50" asp-for="email"></label>
+                <input class="col w-50" asp-for="email"/><br>
+            </div>
+        
+            <span asp-validation-for="password" class="row m-1 text-danger text-center d-block mx-auto"></span>
+            <div class="row m-1">
+                <label asp-for="password" class="col text-right w-50"></label>
+                <input asp-for="password" class="col w-50"/><br>
+            </div>
+
+            <div class="row float-right"><button type="submit">Login</button></div>
+        </form>
+</div>
+<a href="/" class="row justify-content-center">Need to Register?</a>

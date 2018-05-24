@@ -1,0 +1,40 @@
+<h1 class="text-center">Register</h1>
+@model AppName.Models.RegisterViewModel
+<div class="row text-center">
+    <form asp-controller="AppName" asp-action="register" method="post" class="mt-5 mx-auto">
+        
+        <span asp-validation-for="first_name" class="text-danger text-center d-block mx-auto row m-1"></span>
+        <div class="row m-1">
+            <label asp-for="first_name" class="col text-right w-50"></label>
+            <input class="col w-50" asp-for="first_name"/><br>
+        </div>
+
+        <span asp-validation-for="last_name" class="text-danger text-center d-block mx-auto row m-1"></span>
+        <div class="row m-1">
+            <label asp-for="last_name" class="col text-right w-50"></label>
+            <input class="col w-50" asp-for="last_name"/><br>
+        </div>
+
+        <span asp-validation-for="email" class="row m-1 text-danger text-center d-block mx-auto"></span>
+        <div class="row m-1">
+            <label class="col text-right w-50" asp-for="email"></label>
+            <input class="col w-50" asp-for="email"/><br>
+        </div>
+    
+        <span asp-validation-for="password" class="row m-1 text-danger text-center d-block mx-auto"></span>
+        <div class="row m-1">
+            <label asp-for="password" class="col text-right w-50"></label>
+            <input asp-for="password" class="col w-50"/><br>
+        </div>
+    
+        <span asp-validation-for="passwordconfirmation" class="row m-1 text-danger text-center d-block mx-auto"></span>
+        <div class="row m-1">
+            <label asp-for="passwordconfirmation" class="col text-right w-50"></label>
+            <input asp-for="passwordconfirmation" class="col w-50"/><br>
+        </div>
+
+        <div class="row float-right"><button type="submit">Register</button></div>
+    </form>
+      
+</div>
+<a href="/login" class="row justify-content-center">Already Registered?</a>

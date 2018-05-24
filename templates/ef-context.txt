@@ -1,0 +1,8 @@
+using Microsoft.EntityFrameworkCore;
+
+namespace AppName.Models{
+    public class TemplateContext:DbContext{
+        public TemplateContext(DbContextOptions<TemplateContext> options):base(options){}
+	    // public DbSet<User> Users { get; set; }
+    }
+}

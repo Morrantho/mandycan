@@ -8,6 +8,10 @@ namespace mandycan{
 			return Directory.GetCurrentDirectory();
 		}
 
+		public static string project(){
+			return new DirectoryInfo(pwd()).Name;
+		}
+
 		public static void mkdir(string dir){
 			Directory.CreateDirectory(dir);
 		}
